@@ -1,2 +1,2 @@
 # hepsiburada
-MVVM ile ilgil bir template isterseniz burda!
+MVVM ile ilgili bir template isterseniz burda!
