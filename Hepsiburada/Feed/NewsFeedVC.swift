@@ -24,12 +24,21 @@ class NewsFeedVC: BaseVC , AddProductBasketDelegate {
     @IBOutlet var cnsh_ProdcutHeight: NSLayoutConstraint!
     @IBOutlet var bannerImage: UIImageView!
     
-    var VM = NewsFeedViewModel()
+    override func awakeFromNib() {
+        /// TODO - ilerde
+        self.VM = NewsFeedViewModel()
+    }
+    
+    var VM : NewsFeedViewModel! {
+        didSet {
+            VM.delegate = self
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        getProducts()
+        VM.load()
     }
 
     func setUI(){
@@ -40,36 +49,6 @@ class NewsFeedVC: BaseVC , AddProductBasketDelegate {
         pageControl.isUserInteractionEnabled = false
         self.view.backgroundColor = Const.viewBackgroundColor
         self.carouselReloadData()
-    }
-
-    func getProducts()  {
-        SVProgressHUD.show()
-        VM.getProducts(success: { (produts) in
-            self.productCollView.reloadData()
-            self.adjustHeight(count: produts.count , layoutConstant: self.cnsh_ProdcutHeight )
-            SVProgressHUD.dismiss()
-        }, fail: { (error) in
-            SVProgressHUD.dismiss()
-            print("\(error)")
-        })
-        
-        VM.getCarouselImagesUrl(success: { (carouselUrlArr) in
-            self.VM.carouselImages = carouselUrlArr
-            self.carouselReloadData()
-            SVProgressHUD.dismiss()
-        }, fail: { (error) in
-            SVProgressHUD.dismiss()
-            print("\(error)")
-        })
-        
-        VM.getBannerUrl(success: { (bannerUrl) in
-            let url = URL(string: bannerUrl)
-            self.bannerImage.sd_setImage(with: url , placeholderImage: UIImage(named:"default") , options: SDWebImageOptions.continueInBackground, completed: nil)
-            SVProgressHUD.dismiss()
-        }, fail: { (error) in
-            SVProgressHUD.dismiss()
-            print("\(error)")
-        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,6 +79,30 @@ class NewsFeedVC: BaseVC , AddProductBasketDelegate {
     @IBAction func profileMenuAction(_ sender: UIButton) {
         self.simpleAlert(message: "Profile Menüsüne tıklandı!")
     }
+}
+
+
+extension NewsFeedVC : NewsFeedViewModelDelegate {
+    func handleViewModel(_ output: NewsFeedViewModelOutput) {
+        switch output  {
+        case .showProducts(let products):
+            self.productCollView.reloadData()
+            self.adjustHeight(count: products.count , layoutConstant: self.cnsh_ProdcutHeight )
+        case .getBannerUrl(let url):
+            let url = URL(string: url)
+            self.bannerImage.sd_setImage(with: url , placeholderImage: UIImage(named:"default") , options: SDWebImageOptions.continueInBackground, completed: nil)
+        case .iCarouselImages(_):
+            self.carouselReloadData()
+        case .loading(let isLoading):
+            if ( isLoading == true) {
+                SVProgressHUD.show()
+            }else{
+                SVProgressHUD.dismiss()
+            }
+        }
+    }
+    
+    
 }
 
 extension NewsFeedVC : UITableViewDelegate , UITableViewDataSource {

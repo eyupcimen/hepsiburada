@@ -30,6 +30,7 @@
 		CE7A51302156662400DF0F15 /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A512F2156662400DF0F15 /* NewsFeedCell.swift */; };
 		CEFC208821551E7C000DA959 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC208721551E7C000DA959 /* Products.swift */; };
 		D0007FA721A493B300FB51F2 /* NewsFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0007FA621A493B300FB51F2 /* NewsFeedViewModel.swift */; };
+		D023A98721C9912900A5875F /* NewsFeedContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D023A98621C9912900A5875F /* NewsFeedContracts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		CE7A512F2156662400DF0F15 /* NewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
 		CEFC208721551E7C000DA959 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		D0007FA621A493B300FB51F2 /* NewsFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewModel.swift; sourceTree = "<group>"; };
+		D023A98621C9912900A5875F /* NewsFeedContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedContracts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				CE76D59121541E8600B20D18 /* Main.storyboard */,
+				D023A98621C9912900A5875F /* NewsFeedContracts.swift */,
 				CE17CC5C2154E11C00215DE7 /* NewsFeedVC.swift */,
 				D0007FA621A493B300FB51F2 /* NewsFeedViewModel.swift */,
 				CE7A512F2156662400DF0F15 /* NewsFeedCell.swift */,
@@ -335,6 +338,7 @@
 			files = (
 				CE56760921556BD4007759DD /* ServiceResult.swift in Sources */,
 				CE61E0992156418A00B36F58 /* BannerResult.swift in Sources */,
+				D023A98721C9912900A5875F /* NewsFeedContracts.swift in Sources */,
 				CE7A51302156662400DF0F15 /* NewsFeedCell.swift in Sources */,
 				CEFC208821551E7C000DA959 /* Products.swift in Sources */,
 				CE3585AD21575F7700B15309 /* CGRect+Extension.swift in Sources */,

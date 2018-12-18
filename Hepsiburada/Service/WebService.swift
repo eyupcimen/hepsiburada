@@ -87,6 +87,31 @@ class WebService {
             failure()
         }
     }
+    
+    public func getProducts (success:@escaping (_ products :[Products])->(),fail:@escaping (_ error:String)->() ) {
+        
+        WebService.getProducts(url:Const.getProductsUrl , success: { (response) in 
+            success(response.productArr!)
+        }) {
+            fail("Fail")
+        }
+    }
+    
+    public func getCarouselImagesUrl ( success:@escaping (_ url : [String] )->(),fail:@escaping (_ error:String)->() )  {
+        WebService.getCarouselImages(url:Const.getCarouselImageUrl , success: { (response) in
+            success(response.carouselImages!)
+        }) {
+            fail("Fail")
+        }
+    }
+    
+    public func getBannerUrl ( success:@escaping (_ bannerUrl : String )->(),fail:@escaping (_ error:String)->()  )  {
+        WebService.getBannerInfo(url:Const.getBannerUrl , success: { (response) in
+            success(response.bannerImageUrl!)
+        }) {
+            fail("Fail")
+        }
+    }
 }
 
 

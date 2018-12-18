@@ -10,36 +10,39 @@ import Foundation
 import SVProgressHUD
 
 
-class NewsFeedViewModel {
+final class NewsFeedViewModel : NewsFeedViewModelProtocol {
     
-    var products = [Products]()
-    var carouselImages = [String]()
+    weak var delegate: NewsFeedViewModelDelegate?
+    
+    var products : [Products] = []
+    var carouselImages : [String] = []
     var bannerUrl : String?
     
-    func getProducts (success:@escaping (_ products :[Products])->(),fail:@escaping (_ error:String)->() ) {
+    func load() {
+        WebService().getProducts(success: { (productLists) in
+            self.products = productLists
+            self.applyOutput(output: .showProducts(productLists))
+        }) { (err) in
+            print(err)
+        }
         
-        WebService.getProducts(url:Const.getProductsUrl , success: { (response) in
-            self.products = response.productArr!
-            success(response.productArr!)
-        }) {
-            fail("Fail")
+        WebService().getCarouselImagesUrl(success: { (imageUrls) in
+            self.carouselImages  = imageUrls
+            self.applyOutput(output: .iCarouselImages(imageUrls))
+        }) { (err) in
+            print(err)
+        }
+        
+        WebService().getBannerUrl(success: { (bannerUrl) in
+            self.bannerUrl = bannerUrl
+            self.applyOutput(output: .getBannerUrl(bannerUrl))
+        }) { (err) in
+            print(err)
         }
     }
     
-    func getCarouselImagesUrl ( success:@escaping (_ url : [String] )->(),fail:@escaping (_ error:String)->() )  {
-        WebService.getCarouselImages(url:Const.getCarouselImageUrl , success: { (response) in
-            success(response.carouselImages!)
-        }) {
-            fail("Fail")
-        }
-    }
-    
-    func getBannerUrl ( success:@escaping (_ bannerUrl : String )->(),fail:@escaping (_ error:String)->()  )  {
-        WebService.getBannerInfo(url:Const.getBannerUrl , success: { (response) in
-            success(response.bannerImageUrl!)
-        }) {
-            fail("Fail")
-        }
+    func applyOutput(output : NewsFeedViewModelOutput)  {
+        delegate?.handleViewModel(output)
     }
 }
 
