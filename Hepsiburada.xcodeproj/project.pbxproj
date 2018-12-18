@@ -27,7 +27,6 @@
 		CE76D5A12154D86700B20D18 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76D5A02154D86700B20D18 /* BaseVC.swift */; };
 		CE76D5A32154DC3D00B20D18 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76D5A22154DC3D00B20D18 /* Const.swift */; };
 		CE76D5A52154DC8B00B20D18 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76D5A42154DC8B00B20D18 /* Singleton.swift */; };
-		CE76D5A92154DD6F00B20D18 /* README in Resources */ = {isa = PBXBuildFile; fileRef = CE76D5A82154DD6F00B20D18 /* README */; };
 		CE7A51302156662400DF0F15 /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A512F2156662400DF0F15 /* NewsFeedCell.swift */; };
 		CEFC208821551E7C000DA959 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC208721551E7C000DA959 /* Products.swift */; };
 		D0007FA721A493B300FB51F2 /* NewsFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0007FA621A493B300FB51F2 /* NewsFeedViewModel.swift */; };
@@ -63,7 +62,6 @@
 		CE76D5A02154D86700B20D18 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		CE76D5A22154DC3D00B20D18 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		CE76D5A42154DC8B00B20D18 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
-		CE76D5A82154DD6F00B20D18 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		CE7A512F2156662400DF0F15 /* NewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
 		CEFC208721551E7C000DA959 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		D0007FA621A493B300FB51F2 /* NewsFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewModel.swift; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 		CE76D58C21541E8600B20D18 /* Hepsiburada */ = {
 			isa = PBXGroup;
 			children = (
-				CE76D5A82154DD6F00B20D18 /* README */,
 				CE76D58D21541E8600B20D18 /* AppDelegate.swift */,
 				CE17CC5B2154E0F100215DE7 /* Feed */,
 				CE38617321551AD300E28349 /* Service */,
@@ -270,7 +267,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE76D5A92154DD6F00B20D18 /* README in Resources */,
 				CE17CC582154DF5E00215DE7 /* AvenirNextLTPro.ttf in Resources */,
 				CE76D59821541E8600B20D18 /* LaunchScreen.storyboard in Resources */,
 				CE76D59521541E8600B20D18 /* Assets.xcassets in Resources */,

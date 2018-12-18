@@ -47,5 +47,14 @@ class BaseVC: UIViewController {
         view.addAction(cancel)
         self.present(view, animated: true , completion: nil)
     }
+    
+    func alertWithCompletion(bannerUrl : URL? ) {
+        let okay  = UIAlertAction(title: "Okay" , style: .default) { (action) in
+            UIApplication.shared.open(bannerUrl! , options: [:], completionHandler: nil)
+        }
+        let view   = UIAlertController(title: "" , message: "Reklama tıklandı" , preferredStyle: .alert)
+        view.addAction(okay)
+        self.present(view , animated: true) {}
+    }
 }
 

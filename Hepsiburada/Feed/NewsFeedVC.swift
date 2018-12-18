@@ -14,7 +14,7 @@ import SDWebImage
 import SVProgressHUD
 
 
-class NewsFeedVC: BaseVC , UITableViewDelegate , UITableViewDataSource , AddProductBasketDelegate {
+class NewsFeedVC: BaseVC , AddProductBasketDelegate {
 
 
     @IBOutlet var iCarousel: iCarousel!
@@ -33,12 +33,6 @@ class NewsFeedVC: BaseVC , UITableViewDelegate , UITableViewDataSource , AddProd
     }
 
     func setUI(){
-        productCollView.delegate        = self
-        productCollView.dataSource      = self
-        menuTableView.delegate          = self
-        menuTableView.dataSource        = self
-        iCarousel.delegate              = self
-        iCarousel.dataSource            = self
         iCarousel.bounces               = false
         iCarousel.isPagingEnabled       = true
         iCarousel.clipsToBounds         = false
@@ -91,8 +85,6 @@ class NewsFeedVC: BaseVC , UITableViewDelegate , UITableViewDataSource , AddProd
         }
     }
 
-    
-
     @IBAction func bannerBtnClicked(_ sender: UIButton) {
         if VM.bannerUrl != nil {
             let url = URL(string: VM.bannerUrl!)
@@ -100,14 +92,6 @@ class NewsFeedVC: BaseVC , UITableViewDelegate , UITableViewDataSource , AddProd
         }
     }
 
-    func alertWithCompletion(bannerUrl : URL? ) {
-        let okay  = UIAlertAction(title: "Okay" , style: .default) { (action) in
-            UIApplication.shared.open(bannerUrl! , options: [:], completionHandler: nil)
-        }
-        let view   = UIAlertController(title: "" , message: "Reklama tıklandı" , preferredStyle: .alert)
-        view.addAction(okay)
-        self.present(view , animated: true) {}
-    }
 
     @IBAction func sideMenuAction(_ sender: UIButton) {
         self.simpleAlert(message: "Side Menüye tıklandı!")
@@ -116,11 +100,13 @@ class NewsFeedVC: BaseVC , UITableViewDelegate , UITableViewDataSource , AddProd
     @IBAction func profileMenuAction(_ sender: UIButton) {
         self.simpleAlert(message: "Profile Menüsüne tıklandı!")
     }
+}
 
+extension NewsFeedVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
@@ -138,16 +124,15 @@ class NewsFeedVC: BaseVC , UITableViewDelegate , UITableViewDataSource , AddProd
         }
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-
+    
+    
     func userProductAddedBasket(productName: String) {
         simpleAlert(message: "\(productName) sepete eklendi")
     }
-
 }
 
 extension NewsFeedVC : iCarouselDelegate , iCarouselDataSource  {
@@ -201,7 +186,6 @@ extension NewsFeedVC : UICollectionViewDelegate , UICollectionViewDataSource , U
         cell.delegate = self
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var newSize = CGSize.zero
